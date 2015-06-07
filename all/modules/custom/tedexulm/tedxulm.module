@@ -1,0 +1,49 @@
+<?php
+
+function tedxulm_menu() {
+  $items = array();
+
+  $items['home'] = array (
+    'page callback' => 'tedxulm_home_page',
+    'access callback' => true,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+
+function tedxulm_home_page() {
+  $rtn = "";
+
+  $rtn .= "
+    <div id='home-big-box'>
+        <h1 style='font-size: 180%;'>TEDx is coming to Monroe!
+            <br \>
+            <b style='font-size: 140%;'>July 20, 2015</b>
+        </h1>
+        <h3>at the Brown Theatre at the University of Louisiana at Monroe</h3>
+
+        <h5>Speaker details and ticket information coming soon! <br \>
+            Questions? Contact tedexulm@gmail.com
+        </h5>
+    </div>
+  ";
+  return $rtn;
+
+}
+
+
+function tedxulm_form_alter(&$form, &$form_state, $form_id) {
+  //dpm($form_id);
+
+  if ($form_id == 'speaker_node_form') {
+    $form['actions']['submit']['#submit'][] = 'speaker_node_form_submit';
+    dpm($form);
+  }
+}
+
+function speaker_node_form_submit($form, &$form_state) {
+  dpm(array("here"=>"here"));
+  dpm($form_state);
+}

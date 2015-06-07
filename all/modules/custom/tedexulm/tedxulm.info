@@ -1,0 +1,3 @@
+name = TEDxULM (custom module)
+description = This module will provide all custom functionality for the site.
+core = 7.x
